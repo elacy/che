@@ -20,6 +20,12 @@
             <class name="org.eclipse.che.selenium.git.SetGitCommitterTest"/>
             <class name="org.eclipse.che.selenium.debugger.ChangeVariableWithEvaluatingTest"/>
             <class name="org.eclipse.che.selenium.projectexplorer.UploadIntoProjectTest"/>
+            <class name="org.eclipse.che.selenium.git.AmendCommitTest"/>
+            <class name="org.eclipse.che.selenium.git.BranchTest"/>
+            <class name="org.eclipse.che.selenium.miscellaneous.DialogAboutTest"/>
+            <class name="org.eclipse.che.selenium.opendeclaration.Eclipse0120Test"/>
+            <class name="org.eclipse.che.selenium.opendeclaration.Eclipse0121Test"/>
+            <class name="org.eclipse.che.selenium.opendeclaration.Eclipse0122Test"/>
         </classes>
     </test>
 </suite>
