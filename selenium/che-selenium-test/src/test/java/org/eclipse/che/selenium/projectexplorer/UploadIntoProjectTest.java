@@ -27,6 +27,7 @@ import org.eclipse.che.selenium.core.client.TestProjectServiceClient;
 import org.eclipse.che.selenium.core.project.ProjectTemplates;
 import org.eclipse.che.selenium.core.workspace.TestWorkspace;
 import org.eclipse.che.selenium.pageobject.CodenvyEditor;
+import org.eclipse.che.selenium.pageobject.Events;
 import org.eclipse.che.selenium.pageobject.Ide;
 import org.eclipse.che.selenium.pageobject.Menu;
 import org.eclipse.che.selenium.pageobject.NotificationsPopupPanel;
@@ -53,6 +54,7 @@ public class UploadIntoProjectTest {
   @Inject private ProjectExplorer projectExplorer;
   @Inject private Wizard projectWizard;
   @Inject private Menu menu;
+  @Inject private Events eventsPanel;
   @Inject private TestProjectServiceClient testProjectServiceClient;
   @Inject private UploadFileDialogPage uploadFileDialogPage;
   @Inject private UploadDirectoryDialogPage uploadDirectoryDialogPage;
@@ -94,8 +96,11 @@ public class UploadIntoProjectTest {
 
     // then
     uploadFileDialogPage.waitOnClose();
+    eventsPanel.clickEventLogBtn();
+    eventsPanel.waitExpectedMessage(
+        format("File '%s' has uploaded successfully", uploadingFileName));
     notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 40);
+        format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(format("%s/%s", PROJECT_NAME, uploadingFileName));
 
     // Check that uploading file doesn't overwrite existed one
@@ -110,8 +115,11 @@ public class UploadIntoProjectTest {
 
     // then there is changes remained after uploading
     uploadFileDialogPage.waitOnClose();
+    eventsPanel.clickEventLogBtn();
+    eventsPanel.waitExpectedMessage(
+        format("File '%s' has uploaded successfully", uploadingFileName));
     notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 40);
+        format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(pathToUploadingFileInsideTheProject);
     projectExplorer.openItemByPath(pathToUploadingFileInsideTheProject);
     editor.waitTextIntoEditor(TEXT_TO_INSERT);
@@ -134,9 +142,11 @@ public class UploadIntoProjectTest {
 
     // then
     uploadFileDialogPage.waitOnClose();
-
+    eventsPanel.clickEventLogBtn();
+    eventsPanel.waitExpectedMessage(
+        format("File '%s' has uploaded successfully", uploadingFileName));
     notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 40);
+        format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(format("%s/%s", PROJECT_NAME, uploadingFileName));
 
     // Check that uploading file overwrites existed one
@@ -154,8 +164,11 @@ public class UploadIntoProjectTest {
 
     // then there are no changes remained after uploading
     uploadFileDialogPage.waitOnClose();
+    eventsPanel.clickEventLogBtn();
+    eventsPanel.waitExpectedMessage(
+        format("File '%s' has uploaded successfully", uploadingFileName));
     notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 40);
+        format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(pathToUploadingFileInsideTheProject);
     projectExplorer.openItemByPath(pathToUploadingFileInsideTheProject);
     editor.waitTextNotPresentIntoEditor(TEXT_TO_INSERT);
