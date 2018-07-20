@@ -99,8 +99,8 @@ public class UploadIntoProjectTest {
     eventsPanel.clickEventLogBtn();
     eventsPanel.waitExpectedMessage(
         format("File '%s' has uploaded successfully", uploadingFileName));
-    notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 60);
+    // notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
+    //    format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(format("%s/%s", PROJECT_NAME, uploadingFileName));
 
     // Check that uploading file doesn't overwrite existed one
@@ -118,8 +118,8 @@ public class UploadIntoProjectTest {
     eventsPanel.clickEventLogBtn();
     eventsPanel.waitExpectedMessage(
         format("File '%s' has uploaded successfully", uploadingFileName));
-    notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 60);
+    // notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
+    //    format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(pathToUploadingFileInsideTheProject);
     projectExplorer.openItemByPath(pathToUploadingFileInsideTheProject);
     editor.waitTextIntoEditor(TEXT_TO_INSERT);
@@ -145,8 +145,8 @@ public class UploadIntoProjectTest {
     eventsPanel.clickEventLogBtn();
     eventsPanel.waitExpectedMessage(
         format("File '%s' has uploaded successfully", uploadingFileName));
-    notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 60);
+    // notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
+    //    format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(format("%s/%s", PROJECT_NAME, uploadingFileName));
 
     // Check that uploading file overwrites existed one
@@ -167,8 +167,8 @@ public class UploadIntoProjectTest {
     eventsPanel.clickEventLogBtn();
     eventsPanel.waitExpectedMessage(
         format("File '%s' has uploaded successfully", uploadingFileName));
-    notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
-        format("File '%s' has uploaded successfully", uploadingFileName), 60);
+    // notificationPopup.waitExpectedMessageOnProgressPanelAndClosed(
+    //    format("File '%s' has uploaded successfully", uploadingFileName), 60);
     projectExplorer.waitVisibleItem(pathToUploadingFileInsideTheProject);
     projectExplorer.openItemByPath(pathToUploadingFileInsideTheProject);
     editor.waitTextNotPresentIntoEditor(TEXT_TO_INSERT);
